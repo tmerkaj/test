@@ -16,8 +16,8 @@ def call( List dependencies) {
 				// checkout project dependencies
 				  script {
 					def list = [];
-					dependencies.eachWithIndex { it, i ->
-					  def item = [credentialsId:'${env.HC_SVN_USERID}', local:"$it", remote:'${env.HC_SVN_REPO}/'+"$it"+'/trunk' ]
+					dependencies.eachWithIndex { curr, iii ->
+					  def item = [credentialsId:'${env.HC_SVN_USERID}', local:"$curr", remote:'${env.HC_SVN_REPO}/'+"$curr"+'/trunk' ]
 					  list.add(item);
 					}
 					def checkoutMap = ['$class': 'SubversionSCM', 'locations': list]
